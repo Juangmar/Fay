@@ -4,8 +4,7 @@
 
     <item
         android:id="@+id/action_add_task"
+        android:icon="@android:drawable/ic_menu_edit"
         android:title="Add New Task"
-        android:icon="@android:drawable/ic_menu_add"
-        app:showAsAction="always"
-        />
+        app:showAsAction="always" />
 </menu>
