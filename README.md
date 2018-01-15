@@ -19,7 +19,9 @@ Gradle settings:
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) to know about the code of conduct, the process of commiting and accepting pull requests, along with some tips and recomentations about code standards.
+*Fay* is an open source project, so anyone can contribute to develop the app, and we encourage you to do so.
+
+Even though every pull request will be considered and posibly accepted, there's a [file](https://gist.github.com/PurpleBooth/b24679402957c63ec426) to know about some recomendatios about the code of conduct, the process of commiting and accepting pull requests, along with some tips about code standards.
 
 ## Authors
 
@@ -32,7 +34,3 @@ Right now there are no contributors who participates regularly in this project.
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE) file for details
-
-## Acknowledgments
-
-* This is an opensource project, so anyone can contribute to develop the app.
