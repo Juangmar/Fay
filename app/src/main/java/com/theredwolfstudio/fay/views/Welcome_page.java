@@ -16,7 +16,8 @@ import com.theredwolfstudio.fay.R;
 
 
 /**
- * Created by Juan on 16/1/18.
+ * Created by KoldurJ on 16/1/18.
+ * (c) 2018, MIT License
  */
 
 public class Welcome_page extends Activity {
