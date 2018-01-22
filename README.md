@@ -25,7 +25,7 @@ Even though every pull request will be considered and possibly accepted, there's
 
 ## Authors
 
-* **Juan Gómez-Martinho González** - *[KoldurJ](https://github.com/Juangmar)* - 
+* **Juan Gómez-Martinho González** - *[Juangmar](https://github.com/Juangmar)* - 
 
 ## Contributors
 
