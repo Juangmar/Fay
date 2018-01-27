@@ -1,43 +1,69 @@
 package com.theredwolfstudio.fay;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import com.theredwolfstudio.fay.database.DbController;
+
+import java.util.ArrayList;
 
 /**
  * Created by Koldur on 24/01/2018.
  */
 
 public class Tab2_tasks extends Fragment{
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.tab2_tasks, container, false);
-
-        return rootView;
-    }
-
-    /*
 
     DbController dbController;
     ArrayAdapter<String> mAdapter;
     ListView lstTask;
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
 
-        dbController = new DbController(this);
+    View rootView;
+    Context context;
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        rootView = inflater.inflate(R.layout.tab2_tasks, container, false);
 
-        lstTask = findViewById(R.id.taskList);
+        context = rootView.getContext();
+
+        dbController = new DbController(context);
+
+        lstTask = rootView.findViewById(R.id.taskList);
         loadTaskList();
+
+        FloatingActionButton add = rootView.findViewById(R.id.addTask);
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                add();
+            }
+        });
+
+        return rootView;
     }
+
 
     private void loadTaskList() {
         ArrayList<String> tasks = dbController.getTasksList();
         if(mAdapter == null){
-            mAdapter = new ArrayAdapter<String>(this, R.layout.row, R.id.taskTitle, tasks);
+            mAdapter = new ArrayAdapter<>(rootView.getContext(), R.layout.row, R.id.taskTitle, tasks);
+
             lstTask.setAdapter(mAdapter);
         } else{
             mAdapter.clear();
@@ -46,23 +72,11 @@ public class Tab2_tasks extends Fragment{
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu, menu);
 
-        Drawable icon = menu.getItem(0).getIcon();
-        icon.mutate();
-        icon.setColorFilter(getResources().getColor(android.R.color.white), PorterDuff.Mode.SRC_IN);
+    public boolean add() {
 
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch(item.getItemId()){
-            case R.id.action_add_task:
-                final EditText taskEditText = new EditText(this);
-                AlertDialog dialog = new AlertDialog.Builder(this)
+                final EditText taskEditText = new EditText(context);
+                AlertDialog dialog = new AlertDialog.Builder(context)
                         .setTitle("Add new task")
                         .setMessage("Qué tarea quieres apuntar?")
                         .setView(taskEditText)
@@ -77,17 +91,16 @@ public class Tab2_tasks extends Fragment{
                         .setNegativeButton("Cancelar", null)
                         .create();
                 dialog.show();
-        }
-        return super.onOptionsItemSelected(item);
+
+        return true;
     }
 
     public void deleteTask(View view){
         View parent = (View)view.getParent();
-        TextView taskTextView = (TextView)parent.findViewById(R.id.taskTitle);
+        TextView taskTextView = parent.findViewById(R.id.taskTitle);
         Log.e("String", (String) taskTextView.getText());
         String task = String.valueOf(taskTextView.getText());
         dbController.deleteSimpleTask(task);
         loadTaskList();
     }
-     */
 }
